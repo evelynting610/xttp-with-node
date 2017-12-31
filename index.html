@@ -7,13 +7,13 @@
       <h4> Email: <input type='text' id='email' /></h4>
       <script>
         function send () {
-          var email = {
-            value: document.getElementById('email').value
-          }
-          var xhr = new window.XMLHttpRequest()
-          xhr.open('POST', '/email', true)
-          xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
-          xhr.send(JSON.stringify(email))
+          var user = {
+            email: document.getElementById('email').value
+          };
+          var xhr = new window.XMLHttpRequest();
+          xhr.open('POST', '/email', true);
+          xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+          xhr.send(JSON.stringify(user));
         }
       </script>
       <button type='button' value='Send' name='Send' onclick='send()' >

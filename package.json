@@ -1,15 +1,48 @@
 {
   "name": "latitude",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "dependencies": {
-    "express": "^4.16.2"
-  },
-  "devDependencies": {},
+  "description": "test setting email",
+  "repository": "https://github.com/evelynting610/xttp-with-node",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "e2e": "repo-tools test deploy",
+    "test": "repo-tools test app",
+    "cover": "nyc --cache npm test; nyc report --reporter=html"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Evelyn Ting",
+  "cloud-repo-tools": {
+    "requiresKeyFile": true,
+    "requiresProjectId": true,
+    "test": {
+      "app": {
+        "args": [
+          "app.js"
+        ]
+      }
+    }
+  },
+  "license": "Apache-2.0",
+  "semistandard": {
+    "globals": [
+      "after",
+      "afterEach",
+      "before",
+      "beforeEach",
+      "describe",
+      "it"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "@google-cloud/storage": "1.5.1"
+  },
+  "devDependencies": {
+    "@google-cloud/nodejs-repo-tools": "2.1.1",
+    "ava": "0.23.0",
+    "supertest": "3.0.0"
+  },
+  "engines": {
+    "node": ">=4.3.2"
+  }
 }
