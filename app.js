@@ -4,26 +4,6 @@ const path = require('path');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
-// Imports the Google Cloud client library
-const Storage = require('@google-cloud/storage');
-
-// Creates a client
-const storage = new Storage();
-const bucketName = 'ev-test-bucket';
-const filename = './2017-12-30.json';
-
-// Uploads a local file to the bucket
-storage
-  .bucket(bucketName)
-  .upload(filename)
-  .then(() => {
-    console.log(`${filename} uploaded to ${bucketName}.`);
-  })
-  .catch(err => {
-    console.error('ERROR:', err);
-  });
-
-
 //Renders Index HTML file when user hits root url
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '/index.html'));

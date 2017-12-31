@@ -35,7 +35,8 @@
   },
   "dependencies": {
     "express": "^4.16.2",
-    "@google-cloud/storage": "1.5.1"
+    "@google-cloud/storage": "1.5.1",
+    "prompt": "^1.0.0"
   },
   "devDependencies": {
     "@google-cloud/nodejs-repo-tools": "2.1.1",
