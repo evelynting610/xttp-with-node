@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const logging = require('./lib/logging');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
@@ -18,15 +19,17 @@ function currentDate() {
 	return today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 }
 app.post('/email', function (req, res) {
-  var email = req.body;
+  var email = JSON.stringify(req.body);
+  logging.info(email);
+  console.log(email);
   var fileName = currentDate();
-  fs.appendFile('./'+fileName+'.json', JSON.stringify(email)+'\n', (err) => {
-  	if (err) {
-  		console.error(err);
+  fs.appendFile('./'+fileName+'.json', email+'\n', (err) => {
+    if (err) {
+      console.error(err);
         return;
     }
+    return res.end('done');
   });
-  return res.end('done');
 });
 
 // Start the server
